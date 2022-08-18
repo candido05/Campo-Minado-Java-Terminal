@@ -11,14 +11,14 @@ import jogo.modelo.Tabuleiro;
 public class TabuleiroConsole {
 
 	/*
-	 *  Essa classe será usada na Aplicação, pois uma
+	 *  Essa classe serÃ¡ usada na AplicaÃ§Ã£o, pois uma
 	 *  vez chamando esta classe, o jogo inicializa 
 	 *  na classe main
 	 */
 	
 	private Tabuleiro tabuleiro;
 	
-	// Scanener para pedir as informações do jogado no terminal
+	// Scanener para pedir as informaÃ§Ãµes do jogado no terminal
 	private Scanner entrada = new Scanner(System.in);
 
 	public TabuleiroConsole(Tabuleiro tabuleiro) {
@@ -27,11 +27,11 @@ public class TabuleiroConsole {
 		execultarJogo();
 	}
 	
-	// Fica testando a permanência do jogador no jogo
+	// Fica testando a permanÃªncia do jogador no jogo
 	private void execultarJogo() {
 		
-		// dentro do try o jogo é reiniciado a parti da vontade do jogador
-		// respondendo uma pergunta se quer ou não continuar
+		// dentro do try o jogo Ã© reiniciado a parti da vontade do jogador
+		// respondendo uma pergunta se quer ou nÃ£o continuar
 		try {
 			
 			boolean continuar = true;
@@ -58,14 +58,14 @@ public class TabuleiroConsole {
 		
 	}
 
-	// Nesse metodo terá o looping que ficará pergunta do ao jogador
+	// Nesse metodo terÃ¡ o looping que ficarÃ¡ pergunta do ao jogador
 	// qual a linha, qual a coluna, se ele quer marcar e/ou desmarcar 
 	private void cicloDoJogo() {
 		
 		try {
 			
-			// Esse laço while se basea se o objetivo do jogo 
-			// foi ou não alcançado
+			// Esse laÃ§o while se basea se o objetivo do jogo 
+			// foi ou nÃ£o alcanÃ§ado
 			while(!tabuleiro.objetivoAlcancado()) {
 				System.out.println(tabuleiro.toString());
 				
@@ -73,7 +73,7 @@ public class TabuleiroConsole {
 				
 				/*
 				 * Gerando uma stream a parti de um array e gerando essa stream,
-				 * pode-se um map para tranformar cada um dos elementos que são
+				 * usando um map, pode-se tranformar cada um dos elementos que sÃ£o
 				 * do tipo String e transfoma-los em Integer
 				 */
 				
@@ -84,7 +84,7 @@ public class TabuleiroConsole {
 
 				digitado = capturarValorDigitado("1 -- ABRIR // 2 -- (DES)MARCAR: ");
 				
-				// Lógica dos comandos dados pelo jogador
+				// LÃ³gica dos comandos dados pelo jogador
 				if("1".equals(digitado)) {
 					// abre os campos
 					tabuleiro.abrir(xy.next(), xy.next());
@@ -95,21 +95,21 @@ public class TabuleiroConsole {
 				
 			}
 			
-			System.out.println("Você ganhou!!!! :) GRANDE MITADA SUPER BASED CHAD");
+			System.out.println("VocÃª ganhou!!!! :) GRANDE MITADA SUPER BASED CHAD");
 		} catch (ExplosaoException e) {
 			// mostra o tabuleiro com todos as bombas reveladas quando o 
 			// jogador perde a partida
 			System.out.println(tabuleiro);
-			System.out.println("Você perdeu, mais sorte na próxima partida\n");
+			System.out.println("VocÃª perdeu, mais sorte na prÃ³xima partida\n");
 		}
 	}
 	
-	// Este metodo vai receber um texto que será exibido para o usuario
+	// Este metodo vai receber um texto que serÃ¡ exibido para o usuario
 	private String capturarValorDigitado(String texto) {
 		System.out.print(texto);
 		String digitado = entrada.nextLine();
 		
-		// lança uma execeção caso o jogador digite "sair" 
+		// lanÃ§a uma execeÃ§Ã£o caso o jogador digite "sair" 
 		// para que possa sair do jogo
 		if ("sair".equalsIgnoreCase(digitado)) {
 			throw new SairException();
